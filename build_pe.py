@@ -126,6 +126,9 @@ h1, .tile .t, .np-h, .sheet-head h2, .chat-head h2 { font-weight: 900; letter-sp
 .pull-hint { background: var(--green); color: var(--on-green) }
 .hidden-en { filter: blur(8px) }
 button:focus-visible, select:focus-visible { outline-color: var(--blue) }
+/* hover: the same lighter slate as the topic tiles; a chosen (blue) option just gets a little more blue */
+.toggle:hover, .topic-head .toggle:hover, .drop-head:hover, .tbtn:hover, .hit:hover, .close:hover, .hello .ex:hover, .stage-x:hover { background: var(--surface) }
+.toggle[aria-pressed="true"]:hover, .topic-head .toggle[aria-pressed="true"]:hover, .tbtn[aria-current="true"]:hover { background: rgba(73, 192, 248, .22) }
 @media (prefers-reduced-motion: reduce) { .navbtn, .toggle, .act, .chip, .tbtn, .tile, .fab, .fab-chat { transition: none } }
 """
 
