@@ -119,6 +119,10 @@ h1, .tile .t, .np-h, .sheet-head h2, .chat-head h2 { font-weight: 900; letter-sp
 .hello .ex { background: transparent; border-radius: 14px; font-weight: 700 }
 .send { background: var(--green); color: var(--on-green); border-color: var(--green); box-shadow: 0 4px 0 var(--green-d); border-radius: 14px; text-transform: uppercase; font-weight: 900 }
 .send.stop { background: var(--muted); border-color: var(--muted); box-shadow: 0 4px 0 var(--line) }
+.send:hover { background: #A5E04A; border-color: #A5E04A }  /* hover: lighter lime, like Listen */
+.send.stop:hover { background: #A3B5BD; border-color: #A3B5BD }
+.send:hover { filter: none }
+.send:active { transform: translateY(4px); box-shadow: none }
 .pin[aria-pressed="true"] { background: rgba(73, 192, 248, .14); color: var(--blue); border-color: var(--blue-d) }
 .sel-say { background: var(--surface); border: 2px solid var(--line) }
 .sel-say button { color: var(--blue); font-weight: 900 }
