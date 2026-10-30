@@ -170,10 +170,11 @@ body.staged .next-pop { z-index: 47 }
 .sel-say button:hover { background: rgba(255,255,255,.15) }
 /* In-page selector: the pill grows downward with depth and shows a plain list (no system pop-up) */
 .native-hidden { display: none !important }
-.drop { position: relative; display: inline-block; vertical-align: middle; font-size: 14px; z-index: 6; transition: transform .3s }
+.drop { position: relative; display: inline-block; vertical-align: middle; font-size: 14px; z-index: 6; transition: transform .3s, width .25s ease }
 .drop.open { z-index: 30 }
 .drop-box { position: relative }
-.drop.open .drop-box { position: absolute; top: 0; left: 0; width: max-content; min-width: 100%; transform: translateY(-2px) scale(1.02); transition: transform .3s }
+.drop.open .drop-box { position: absolute; top: 0; left: 0; width: 100%; transform: translateY(-2px); transition: transform .3s }
+.drop.open.measuring .drop-box { width: max-content; min-width: 100% }
 .drop.open .drop-head { width: 100%; max-width: none; justify-content: space-between }
 .drop-head { display: inline-flex; align-items: center; gap: 10px; min-height: 32px; max-width: 280px; padding: 4px 14px; color: inherit; font: inherit; font-size: 13px;
   background: transparent; border: 1.5px solid rgba(255,255,255,.35); border-radius: 19px; white-space: nowrap; transition: border-radius .25s, background .25s, box-shadow .3s }
@@ -1275,10 +1276,17 @@ COURSE CONTEXT:
     b.onclick = () => { opts[key] = !opts[key]; store.set(key, opts[key]); b.setAttribute("aria-pressed", String(opts[key])); renderKeepPlace() };
   }
   // Turn a <select> into the in-page selector above; the <select> stays (hidden) as the source of the value.
+  // Open: the box widens to its longest option and the pills beside it move aside, so the gaps stay as they were;
+  // its height in the row stays the same, so the list floats over what is below.
   function setOpen(d, on) {
-    if (on) { d.style.width = d.offsetWidth + "px"; d.style.height = d.offsetHeight + "px" }  // hold its place in the row
-    else { d.style.width = ""; d.style.height = "" }
-    d.classList.toggle("open", on);
+    if (!on) { d.style.width = ""; d.style.height = ""; d.classList.remove("open"); return }
+    const w0 = d.offsetWidth;
+    d.style.width = w0 + "px"; d.style.height = d.offsetHeight + "px";
+    d.classList.add("open", "measuring");
+    const w = Math.min(Math.max(w0, Math.ceil(d.querySelector(".drop-box").getBoundingClientRect().width)), d.parentElement.clientWidth);
+    d.classList.remove("measuring");
+    void d.offsetWidth;  // start the widening from the closed width
+    d.style.width = w + "px";
   }
   function closeDrops(except) { document.querySelectorAll(".drop.open").forEach(x => { if (x !== except) setOpen(x, false) }) }
   function dropify(sel) {
