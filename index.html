@@ -30,11 +30,12 @@ button:focus-visible, select:focus-visible { outline: 3px solid var(--red); outl
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; color: #fff;
   background: rgba(34, 50, 79, .82); -webkit-backdrop-filter: blur(18px) saturate(120%); backdrop-filter: blur(18px) saturate(120%);
   padding-block: 6px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)) }
-.bar-row { max-width: 980px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+/* the bar's rows line up with the page content below (main is 980px wide with 16px padding: 948px of content) */
+.bar-row { max-width: 948px; margin: 0 auto; display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
 .navbtn { background: rgba(255,255,255,.12); border: 0; border-radius: 9px; padding: 6px 12px; font-size: 14px; font-weight: 700; color: #fff; min-height: 36px }
 .navbtn:hover { background: rgba(255,255,255,.22) }
 .crumb { flex: 1; min-width: 0; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: .02em; opacity: .9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-.opts { max-width: 980px; margin: 0 auto; padding-top: 6px; display: flex; gap: 6px; flex-wrap: wrap }
+.opts { width: 100%; max-width: 948px; margin: 0 auto; padding-top: 6px; display: flex; gap: 6px; flex-wrap: wrap }
 /* the options row folds away; the arrow button in the top row opens it */
 .opts-wrap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease }
 .opts-wrap > .opts { min-height: 0; overflow: hidden }
@@ -107,7 +108,7 @@ h1 { font-family: var(--display); font-weight: 800; font-size: clamp(26px, 4vw, 
 #barTopic { margin: 6px calc(-1 * max(16px, env(safe-area-inset-right, 0px))) -6px calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
   padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
   background: rgba(11, 17, 28, .72); border-bottom: 1.5px solid var(--line); color: var(--ink) }
-.topic-head { max-width: 980px; margin: 0 auto; padding-block: 14px 12px }
+.topic-head { max-width: 948px; margin: 0 auto; padding-block: 14px 12px }
 .topic-head h1 { margin: 2px 0 4px }
 main.in-topic { padding-top: 14px }
 /* floating control while the whole topic is read aloud */
@@ -194,7 +195,7 @@ body.staged .next-pop { z-index: 47 }
 .note { margin-top: 26px; color: var(--muted); font-size: 14px }
 
 /* Topic row under the bar */
-.chips { max-width: 980px; margin: 6px auto 0; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px }
+.chips { max-width: 948px; margin: 6px auto 0; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px }
 .chips::-webkit-scrollbar { display: none }
 .chip { flex: none; background: rgba(255,255,255,.1); border: 0; color: #fff; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 700; min-height: 32px; white-space: nowrap }
 .chip[aria-current="true"] { background: #fff; color: #0C1422 }
@@ -1033,7 +1034,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
     if (staged() && stack[stack.length - 1].v !== "topic") exitStage();
     const st = stack[stack.length - 1];
     document.getElementById("back").disabled = stack.length < 2;
-    document.getElementById("back").style.visibility = stack.length < 2 ? "hidden" : "visible";
+    document.getElementById("back").hidden = stack.length < 2;  // on the home page the title starts at the left edge
     if (st.v === "home") renderHome();
     else if (st.v === "section") renderSection(st.s);
     else renderTopic(st.s, st.t);
