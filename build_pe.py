@@ -101,6 +101,9 @@ h1, .tile .t, .np-h, .sheet-head h2, .chat-head h2 { font-weight: 900; letter-sp
 .fab:active { transform: translateY(4px); box-shadow: none }
 .fab-chat { background: var(--blue); color: var(--on-blue); border-color: var(--blue); box-shadow: 0 4px 0 var(--blue-d); text-transform: uppercase; letter-spacing: .05em; font-weight: 900; border-radius: 16px }
 .fab-chat:active { transform: translateY(4px); box-shadow: none }
+.fab-chat:hover { background: #7DD3FB; border-color: #7DD3FB }  /* hover: a lighter sky blue */
+.fab:hover { background: #A5E04A; border-color: #A5E04A }
+.fab:hover, .fab-chat:hover { filter: none }
 .close { background: transparent; color: var(--blue); border-radius: 14px; text-transform: uppercase; font-weight: 900; font-size: 13px }
 .tbtn { background: var(--bg); border-radius: 14px; font-weight: 800 }
 .tbtn[aria-current="true"] { border-color: var(--blue-d); color: var(--blue); background: rgba(73, 192, 248, .1); box-shadow: 0 2px 0 var(--blue-d) }
