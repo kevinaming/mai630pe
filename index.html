@@ -1024,7 +1024,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
       ${hide ? `<div class="reveal-hint">Di la frase en inglés y toca el texto para comprobar.</div>` : ""}
       ${opts.pron && (it.pron || autoPron(it.en)) ? `<div class="pron">Pronunciación: ${pronHtml(it.pron || autoPron(it.en))}</div>` : ""}
       ${opts.es && it.es ? `<div class="es">${esc(it.es)}</div>` : ""}
-      ${tts ? `<div class="actions"><button class="act play" type="button" data-say="${i}">▶ Listen</button><button class="act" type="button" data-say="${i}" data-rate="0.6">Very slow</button></div>` : ""}
+      ${tts ? `<div class="actions"><button class="act play" type="button" data-say="${i}">▶ Listen</button></div>` : ""}
     </article>`;
   }
 
@@ -1221,7 +1221,7 @@ COURSE CONTEXT:
       bot.innerHTML = `${it.q ? `<div class="qen">Pregunta: ${esc(it.q)}</div>` : ""}<div class="ans-lbl">Say this</div><div class="aen">${esc(it.en)}</div>
         ${opts.pron && it.pron ? `<div class="pron">Pronunciación: ${pronHtml(it.pron)}</div>` : ""}
         ${opts.es && it.es ? `<div class="es">${esc(it.es)}</div>` : ""}
-        ${tts ? `<div class="actions"><button class="act play" type="button" data-n="1">▶ Listen</button><button class="act" type="button" data-n="0.6">Very slow</button></div>` : ""}`;
+        ${tts ? `<div class="actions"><button class="act play" type="button" data-n="1">▶ Listen</button></div>` : ""}`;
       bot.querySelectorAll("[data-n]").forEach(b => b.onclick = () => say(it.en, parseFloat(b.dataset.n) === 1 ? null : 0.6, b));
     } catch (e) {
       bot.classList.add("err");
