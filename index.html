@@ -672,7 +672,10 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
     };
     u.onend = finished;
     u.onerror = finished;
-    speechSynthesis.speak(u);
+    // Right after a cut (↻, ⏮, ⏭, the track) the browser may drop a phrase given at once; wait a moment, then speak.
+    const wait = cutAt + 150 - performance.now();
+    if (wait > 0) setTimeout(() => { if (reading === run && run.gen === gen) speechSynthesis.speak(u) }, wait);
+    else speechSynthesis.speak(u);
   }
   // The player in the red bar. Back, forward, the track and ↻ cut the current phrase and start phrase j from its beginning.
   function readJump(j) {
@@ -681,7 +684,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
     hideNext();
     run.gen++;  // the cut phrase's end handler sees this and does nothing
     clearTimeout(run.timer); run.timer = null;
-    speechSynthesis.cancel();
+    speechSynthesis.cancel(); cutAt = performance.now();
     if (run.undo) { run.undo(); run.undo = null }
     const cards = view.querySelectorAll(".card");
     if (j > run.i) for (let k = run.i; k < j; k++) markHeard(cards[k], k);
@@ -690,7 +693,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
   }
   // How much of the phrase is said: the time spent against an estimate from its words and the speed,
   // pushed forward by the word the voice reports (when it does); it holds just short of the end until the voice finishes.
-  let fillRaf = 0;
+  let fillRaf = 0, cutAt = -1e9;  // cutAt: when a player button last cut the voice
   function setFill(p) { const el = document.querySelector("#readerTrack .now i"); if (el) el.style.width = (p * 100).toFixed(1) + "%" }
   function runFill(u, text, run, gen, from = 0) {
     let said = 0;
@@ -737,7 +740,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
     if (!run.paused) {
       run.paused = true; setPlayIcon(true); hideNext();
       if (run.timer) { clearTimeout(run.timer); run.timer = null; run.resume = { ...run.after, from: 0 } }  // between phrases
-      else { run.resume = resumePoint(run); run.gen++; speechSynthesis.cancel(); cancelAnimationFrame(fillRaf) }
+      else { run.resume = resumePoint(run); run.gen++; speechSynthesis.cancel(); cutAt = performance.now(); cancelAnimationFrame(fillRaf) }
       return;
     }
     run.paused = false; setPlayIcon(false);
