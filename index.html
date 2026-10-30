@@ -434,7 +434,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
 </div>
 <div class="sel-say" id="selSay" hidden><button type="button" data-rate="">🔊 Listen</button><button type="button" data-rate="0.6">Slow</button></div>
 <button class="fab" id="fab" type="button" aria-haspopup="dialog">☰ Topics</button>
-<button class="fab-chat" id="fabChat" type="button" aria-haspopup="dialog" hidden>💬 Assistant</button>
+<button class="fab-chat" id="fabChat" type="button" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-right:4px"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>Assistant</button>
 <div class="chat" id="chat" role="dialog" aria-label="Asistente para responder" hidden>
   <div class="chat-body">
     <div class="chat-head">
@@ -990,7 +990,7 @@ button:focus-visible, select:focus-visible { outline-color: var(--blue) }
         <h1>${esc(t.title)}</h1>
         ${tts ? `<div class="actions play-all"><button class="act play" id="playAll" type="button">▶ Read whole topic</button>
           <select class="speed" id="repeatPick" aria-label="Repeat each phrase">${["1", "2", "3", "5", "inf"].map(v => `<option value="${v}"${opts.repeat === v ? " selected" : ""}>Repeat: ${v === "inf" ? "∞" : v + "×"}</option>`).join("")}</select>
-          <button class="toggle" id="echoBtn" type="button" aria-pressed="${opts.echo}" title="After each phrase, a pause as long as the phrase so you can repeat it">🗣 Echo mode</button>
+          <button class="toggle" id="echoBtn" type="button" aria-pressed="${opts.echo}" title="After each phrase, a pause as long as the phrase so you can repeat it"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-2px"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg> Echo mode</button>
           <button class="toggle full-btn" id="fullBtn" type="button" title="Show the phrases big, with only the player"><svg viewBox="0 0 24 24" width="15" height="15" style="vertical-align:-2px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" x2="14" y1="3" y2="10"/><line x1="3" x2="10" y1="21" y2="14"/></svg> Full screen</button></div>` : ""}
       </div>`;
     view.innerHTML = `
