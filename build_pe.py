@@ -68,6 +68,8 @@ h1, .tile .t, .np-h, .sheet-head h2, .chat-head h2 { font-weight: 900; letter-sp
 .act.play:hover { background: #A5E04A; border-color: #A5E04A }
 .act.play:active { transform: translateY(4px); box-shadow: none }
 .act.stopping, .sel-say button.stopping { background: var(--danger); color: #fff; border-color: var(--danger); box-shadow: 0 4px 0 var(--danger-d) }
+.act.stopping:hover, .sel-say button.stopping:hover { background: #FF6B6B; border-color: #FF6B6B; color: #fff }  /* hover: a lighter red, never the green */
+.act.stopping:active { transform: translateY(4px); box-shadow: none }
 .next .act.play { box-shadow: 0 4px 0 var(--green-d) }
 
 /* "next topic" window */
