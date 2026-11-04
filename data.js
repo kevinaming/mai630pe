@@ -193,7 +193,7 @@ window.SECTIONS = [
       "es": "Empecemos con un repaso rápido de la clase de esta semana."
      },
      {
-      "en": "How is everyone doing with the assignments? Did anyone start already?",
+      "en": "How's everyone doing with the assignments? Did anyone start already?",
       "es": "¿Cómo van con las tareas? ¿Alguien ya empezó?"
      },
      {
@@ -2238,7 +2238,7 @@ window.SECTIONS = [
       "es": "Si puedes predecir el resultado, entiendes la operación. Si te sorprende, aprendiste algo. El orden es kernel, predicción, ejecución y comparación."
      },
      {
-      "q": "How is this related to neural networks?",
+      "q": "How's this related to neural networks?",
       "qes": "¿Cómo se relaciona con las redes neuronales?",
       "en": "A CNN does exactly the same convolution. The difference is that the network learns the numbers of the kernel by itself. We see it in Module 2.",
       "es": "Una CNN hace exactamente la misma convolución. La diferencia es que la red aprende sola los números del kernel. Lo vemos en el Módulo 2.",
@@ -2326,7 +2326,7 @@ window.SECTIONS = [
       "pron": "histogram (JÍS-to-gram)"
      },
      {
-      "q": "When is adaptive better?",
+      "q": "When's adaptive better?",
       "qes": "¿Cuándo es mejor el adaptativo?",
       "en": "When the light isn't the same everywhere, for example a shadow on one side. It uses a different threshold for each small part.",
       "es": "Cuando la luz es desigual, por ejemplo una sombra de un lado. Usa un umbral distinto para cada zona pequeña."
@@ -2727,7 +2727,7 @@ window.SECTIONS = [
      {
       "q": "Do my photos have to be potholes?",
       "qes": "¿Mis fotos tienen que ser de baches?",
-      "en": "No. Use photos of the object you would like to detect in your project. Nothing private, and only photos you have the right to use.",
+      "en": "No. Use photos of the object you'd like to detect in your project. Nothing private, and only photos you have the right to use.",
       "es": "No. Usa fotos del objeto que te gustaría detectar en tu proyecto. Nada privado, y solo fotos que tengas derecho a usar."
      },
      {
@@ -2841,7 +2841,7 @@ window.SECTIONS = [
      },
      {
       "qes": "¿Qué debe decir el final?",
-      "en": "Explain what classical filters could not do for your chosen object."
+      "en": "Explain what classical filters couldn't do for your chosen object."
      },
      {
       "qes": "¿Qué commit final uso?",
@@ -2862,7 +2862,7 @@ window.SECTIONS = [
      {
       "q": "How should the comparison end?",
       "qes": "¿Cómo debe terminar la comparación?",
-      "en": "With what the classical operators could not do for your object. That's the reason your detector will learn its own features.",
+      "en": "With what the classical operators couldn't do for your object. That's the reason your detector will learn its own features.",
       "es": "Con lo que los operadores clásicos no pudieron hacer con tu objeto. Esa es la razón por la que tu detector va a aprender sus propias características.",
       "pron": "features (FÍ-chers)"
      },
@@ -3145,7 +3145,7 @@ window.SECTIONS = [
      },
      {
       "qes": "¿Los pasos de Windows/Colab están probados?",
-      "en": "The guide says they were not tested end to end. Please report anything different in Moodle."
+      "en": "The guide says they weren't tested end to end. Please report anything different in Moodle."
      }
     ]
    },
